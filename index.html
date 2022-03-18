@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
+    <audio id="vd" src="1.mp3" autoplay></audio>
     <main>
         <nav>
+
             <section>
                 <img src="bg.jpg" id="bg">
                 <img src="moon.png" id="moon">
@@ -22,32 +25,43 @@
         <nav>
             <div>
                 <h3 id="text1">
-                    欢迎来到月球<br>我会在这分享
+                    欢迎来到FPS玩家的主页<br>
                     <br>
                 </h3>
             </div>
         </nav>
-    </main>
-    <script>
-        let bg = document.querySelector('#bg')
-        let moon = document.querySelector('#moon')
-        let mountain = document.querySelector('#mountain')
-        let road = document.querySelector('#road')
-        let text = document.querySelector('#text')
+        <script>
+            window.onload = function() {
+                setInterval("toggleSound()", 100);
+            }
 
-        window.addEventListener('scroll', () => {
-            var value = window.scrollY;
+            function toggleSound() {
+                var music = document.getElementById("vd"); //获取ID  
 
-            bg.style.top = value * 0.5 + 'px';
-            moon.style.left = -value * 0.5 + 'px';
-            mountain.style.top = -value * 0.15 + 'px';
-            road.style.top = value * 0.15 + 'px';
+                if (music.paused) { //判读是否播放  
+                    music.paused = false;
+                    music.play(); //没有就播放 
+                }
+            }
+            let bg = document.querySelector('#bg')
+            let moon = document.querySelector('#moon')
+            let mountain = document.querySelector('#mountain')
+            let road = document.querySelector('#road')
+            let text = document.querySelector('#text')
 
-            text.style.top = value * 1 + 'px';
+            window.addEventListener('scroll', () => {
+                var value = window.scrollY;
+
+                bg.style.top = value * 0.5 + 'px';
+                moon.style.left = -value * 0.5 + 'px';
+                mountain.style.top = -value * 0.15 + 'px';
+                road.style.top = value * 0.15 + 'px';
+
+                text.style.top = value * 1 + 'px';
 
 
-        })
-    </script>
+            })
+        </script>
 
 </body>
 
